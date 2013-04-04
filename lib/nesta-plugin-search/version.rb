@@ -1,7 +1,7 @@
 module Nesta
   module Plugin
     module Search
-      VERSION = "0.1.2"
+      VERSION = "0.0.1"
     end
   end
 end
