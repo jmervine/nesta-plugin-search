@@ -70,10 +70,8 @@ module Nesta
         def reindex
           @index = Ferret::Index::Index.new
 
-          @ignores ||= %w[ /categories /search / /archive /archive/2012 /archive/2013 ]
-
           Nesta::Page.send(@index_method).each do |item|
-            unless @ignores.include?(item.abspath)
+            unless Nesta::Config.search_ignore_list.include?(item.abspath)
               @index << {:heading => item.heading, :href => item.abspath, :summary => item.summary, :body => item.body}
             end
           end
